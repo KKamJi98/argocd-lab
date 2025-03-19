@@ -3,6 +3,15 @@ kind: Application
 metadata:
   name: metrics-server
   namespace: argocd
+  # annotations:
+  #   notifications.argoproj.io/subscribe.on-sync-succeeded.slack: "argocd-alarm"
+  #   notifications.argocd.io/subscribe.on-sync-failed.slack: "argocd-alarm"
+  #   notifications.argocd.io/subscribe.on-sync-running.slack: "argocd-alarm"
+  #   notifications.argocd.io/subscribe.on-deployed.slack: "argocd-alarm"
+  #   notifications.argocd.io/subscribe.on-health-degraded.slack: "argocd-alarm"
+  #   notifications.argocd.io/subscribe.on-health-progressing.slack: "argocd-alarm"
+  #   notifications.argocd.io/subscribe.on-health-healthy.slack: "argocd-alarm"
+  #   notifications.argocd.io/subscribe.on-health-unknown.slack: "argocd-alarm"
 spec:
   project: default
   source:
