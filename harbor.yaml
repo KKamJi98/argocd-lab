@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: harbor
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/KKamJi98/helm-charts
+    path: harbor
+    targetRevision: main
+    helm:
+      releaseName: harbor
+      valueFiles:
+      - kkamji_values.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: harbor
+  syncPolicy:
+    # automated:
+    #   prune: true
+    #   selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true
