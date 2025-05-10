@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prod-bootstrap
+  namespace: argocd
+spec:
+  source:
+    repoURL: https://github.com/KKamJi98/argocd.git
+    path: app-of-apps/applications # Child App 모음
+    targetRevision: main
+    directory:
+      recurse: true
+      # 아래 parameter 는 {{cluster}} 토큰 치환
+      jsonnet: {}
+      parameters:
+      - name: cluster
+        value: prod # 토큰 값
+  destination:
+    name: kkamji-al2023
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

@@ -4,15 +4,18 @@ metadata:
   name: external-secrets
   namespace: argocd
 spec:
-  project: default
+  project: eks
   source:
     repoURL: https://charts.external-secrets.io
     chart: external-secrets
     targetRevision: 0.14.3
     helm:
       releaseName: external-secrets
+      valueFiles:
+        - values/common.yaml
+        - ../../clusters/{{cluster}}/values-external-secrets.yaml  # ② 클러스터별
   destination:
-    server: 'https://A0A31277A18C3F3DE82CB09570CD6A92.gr7.ap-northeast-2.eks.amazonaws.com'
+    name: {{cluster}}
     namespace: external-secrets
   syncPolicy:
     # automated:
