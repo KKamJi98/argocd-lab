@@ -13,9 +13,9 @@ spec:
       releaseName: aws-load-balancer-controller
       valueFiles:
         - values/common.yaml
-        - ../../clusters/{{cluster}}/values-aws-load-balancer-controller.yaml  # ② 클러스터별
+        - "../../clusters/{{cluster}}/values-aws-load-balancer-controller.yaml"  # ② 클러스터별
   destination:
-    name: {{cluster}}
+    name: '{{cluster}}'
     namespace: kube-system
   syncPolicy:
     # automated:

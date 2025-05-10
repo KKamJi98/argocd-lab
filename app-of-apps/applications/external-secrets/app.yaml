@@ -13,9 +13,9 @@ spec:
       releaseName: external-secrets
       valueFiles:
         - values/common.yaml
-        - ../../clusters/{{cluster}}/values-external-secrets.yaml  # ② 클러스터별
+        - "../../clusters/{{cluster}}/values-external-secrets.yaml"  # ② 클러스터별
   destination:
-    name: {{cluster}}
+    name: '{{cluster}}'
     namespace: external-secrets
   syncPolicy:
     # automated:
