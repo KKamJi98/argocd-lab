@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: external-secrets
+  name: external-secrets-eks
   namespace: argocd
 spec:
   project: default
@@ -14,7 +14,7 @@ spec:
       valueFiles:
         - values/common.yaml
   destination:
-    name: '{{cluster}}'
+    name: kkamji-al2023
     namespace: external-secrets
   syncPolicy:
     # automated:

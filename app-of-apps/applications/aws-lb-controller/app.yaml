@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: aws-lb-controller
+  name: aws-load-balancer-controller-eks
   namespace: argocd
 spec:
   project: default
