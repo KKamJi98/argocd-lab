@@ -11,8 +11,8 @@ spec:
     targetRevision: 0.14.3
     helm:
       releaseName: external-secrets
-      valueFiles:
-        - values/common.yaml
+      # valueFiles:
+      #   - values/common.yaml
   destination:
     name: kkamji-al2023
     namespace: external-secrets
