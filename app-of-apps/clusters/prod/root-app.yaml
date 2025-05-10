@@ -12,6 +12,7 @@ spec:
           - list:
               elements:
                 - cluster: kkamji-al2023
+                - env: prod
           # ② Git Directory 스캔 (path만 지정)
           - git:
               repoURL: https://github.com/KKamJi98/argocd.git
