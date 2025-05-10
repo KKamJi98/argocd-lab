@@ -5,23 +5,17 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: https://github.com/KKamJi98/argocd.git   # ← 내 Git
-    path: apps/aws-load-balancer-controller          # 차트 없음, 단순 디렉터리
-    targetRevision: main
+  sources:
+  - repoURL: https://aws.github.io/eks-charts
+    chart: aws-load-balancer-controller
+    targetRevision: 1.13.0
     helm:
-      chart: aws-load-balancer-controller            # Helm remote chart
-      repoURL: https://aws.github.io/eks-charts
+      releaseName: aws-load-balancer-controller
       valueFiles:
-        - values/common.yaml                         # Git repo 기준 경로
-  # source:
-  #   repoURL: https://aws.github.io/eks-charts
-  #   chart: aws-load-balancer-controller
-  #   targetRevision: 1.13.0
-  #   helm:
-  #     releaseName: aws-load-balancer-controller
-  #     valueFiles:
-  #       - values/common.yaml
+        - $values/app-of-apps/applications/aws-lb-controller/values/common.yaml
+  - repoURL: https://github.com/KKamJi98/argocd.git
+    targetRevision: main
+    ref: values
   destination:
     name: kkamji-al2023
     namespace: kube-system
