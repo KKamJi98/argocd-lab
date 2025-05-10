@@ -1,5 +1,5 @@
 crds:
   enabled: true
-clusterName: "{{ .Values.global.clusterName }}"   # 전역 값도 활용 가능
+clusterName: kkamji-al2023
 serviceAccount:
   create: true
