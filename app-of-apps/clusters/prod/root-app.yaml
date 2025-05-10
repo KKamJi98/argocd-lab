@@ -21,7 +21,7 @@ spec:
                 - path: app-of-apps/applications/*
   template:
     metadata:
-      name: "{{cluster}}-{{path.basename}}"
+      name: "{{path.basename}}"
     spec:
       project: default
       source:

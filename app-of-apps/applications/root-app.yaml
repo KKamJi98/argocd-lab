@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/KKamJi98/argocd.git
+    targetRevision: main
+    path: app-of-apps/applications/*               # ← 아래에 있는 Child Applications 디렉토리
+    directory:
+      recurse: true
+  destination:
+    server: https://kubernetes.default.svc  # ← ArgoCD 가 설치된 클러스터
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true

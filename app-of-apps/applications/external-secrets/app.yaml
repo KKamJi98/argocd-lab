@@ -13,7 +13,6 @@ spec:
       releaseName: external-secrets
       valueFiles:
         - values/common.yaml
-        - "../../../clusters/{{env}}/values-external-secrets.yaml"  # ② 클러스터별
   destination:
     name: '{{cluster}}'
     namespace: external-secrets
