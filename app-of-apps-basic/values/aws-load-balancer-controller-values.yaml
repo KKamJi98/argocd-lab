@@ -1,6 +1,0 @@
-crds:
-  enabled: true
-clusterName: kkamji-al2023
-serviceAccount:
-  create: true
-  name: aws-load-balancer-controller-sa
