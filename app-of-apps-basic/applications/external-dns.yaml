@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: external-dns-eks
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: https://kubernetes-sigs.github.io/
+    chart: external-dns
+    targetRevision: 1.16.1
+    helm:
+      releaseName: external-dns
+      valueFiles:
+        - $values/external-dns/kkamji_values_eks.yaml
+  - repoURL: https://github.com/KKamJi98/helm-charts.git
+    targetRevision: main
+    ref: values
+  destination:
+    name: kkamji-al2023
+    namespace: external-secrets
+  syncPolicy:
+    # automated:
+    #   prune: true
+    #   selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true
