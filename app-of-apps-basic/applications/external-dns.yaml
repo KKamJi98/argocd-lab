@@ -18,7 +18,7 @@ spec:
     ref: values
   destination:
     name: kkamji-al2023
-    namespace: external-secrets
+    namespace: external-dns
   syncPolicy:
     automated:
       prune: true
