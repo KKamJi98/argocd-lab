@@ -14,7 +14,7 @@ spec:
     helm:
       releaseName: aws-load-balancer-controller
       valueFiles:
-        - $values/aws-load-balancer-controller/kkamji_values_eks.yaml
+      - $values/aws-load-balancer-controller/kkamji_values_eks.yaml
   - repoURL: https://github.com/KKamJi98/helm-charts.git
     targetRevision: main
     ref: values
