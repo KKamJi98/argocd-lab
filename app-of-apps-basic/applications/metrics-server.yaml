@@ -7,9 +7,9 @@ metadata:
     argocd.argoproj.io/sync-wave: "0"
 spec:
   project: default
-  source:
+  sources:
   - repoURL: https://kubernetes-sigs.github.io/metrics-server/
-    path: metrics-server
+    chart: metrics-server
     targetRevision: 3.12.2
     helm:
       releaseName: metrics-server
@@ -19,8 +19,8 @@ spec:
     targetRevision: main
     ref: values
   destination:
-    server: kkamji-al2023
-    name: kube-system
+    name: kkamji-al2023
+    namespace: kube-system
   syncPolicy:
     automated:
       prune: true
