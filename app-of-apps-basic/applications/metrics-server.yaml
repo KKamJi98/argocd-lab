@@ -20,7 +20,7 @@ spec:
     ref: values
   destination:
     server: kkamji-al2023
-    namespace: kube-system
+    name: kube-system
   syncPolicy:
     automated:
       prune: true
