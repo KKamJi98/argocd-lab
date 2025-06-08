@@ -1,26 +1,26 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: external-dns-eks
+  name: metrics-server
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   project: default
-  sources:
-  - repoURL: https://kubernetes-sigs.github.io/external-dns/
-    chart: external-dns
-    targetRevision: 1.16.1
+  source:
+  - repoURL: https://kubernetes-sigs.github.io/metrics-server/
+    path: metrics-server
+    targetRevision: 3.12.2
     helm:
-      releaseName: external-dns
+      releaseName: metrics-server
       valueFiles:
-      - $values/external-dns/kkamji_values_eks.yaml
+      - $values/metrics-server/kkamji_values.yaml
   - repoURL: https://github.com/KKamJi98/helm-charts.git
     targetRevision: main
     ref: values
   destination:
-    name: kkamji-al2023
-    namespace: external-dns
+    server: kkamji-al2023
+    namespace: kube-system
   syncPolicy:
     automated:
       prune: true

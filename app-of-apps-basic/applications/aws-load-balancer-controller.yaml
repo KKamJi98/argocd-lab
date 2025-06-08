@@ -19,7 +19,7 @@ spec:
     targetRevision: main
     ref: values
   destination:
-    name: kkamji-al2023-prod
+    name: kkamji-al2023
     namespace: kube-system
   syncPolicy:
     automated:
