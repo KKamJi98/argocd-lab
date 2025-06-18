@@ -46,6 +46,9 @@ spec:
     server: 'https://kubernetes.default.svc'
     namespace: minio
   syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true

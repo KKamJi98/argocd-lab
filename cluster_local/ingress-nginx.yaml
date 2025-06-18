@@ -18,14 +18,15 @@ spec:
               if ($http_user_agent ~* "GPTBot") {
                 return 403;
               }
+            proxy-body-size: "300m"
 
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: ingress-nginx
   syncPolicy:
-    # automated:
-    #   prune: true
-    #   selfHeal: true
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
     - CreateNamespace=true
     - ServerSideApply=true
