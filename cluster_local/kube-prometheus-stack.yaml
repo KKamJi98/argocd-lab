@@ -15,7 +15,7 @@ spec:
     helm:
       releaseName: kube-prometheus-stack
       valueFiles:
-      - kkamji_values.yaml
+      - kkamji_local_with_thanos.yaml
       # values: |-
       #   grafana:
       #     ingress:
