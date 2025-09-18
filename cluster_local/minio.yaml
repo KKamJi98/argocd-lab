@@ -42,6 +42,9 @@ spec:
           rootUser: admin
           rootPassword: ""  # set your password here or via an external secret
 
+        resourcesPreset: "small"
+
+
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: minio
