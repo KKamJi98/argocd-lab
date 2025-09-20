@@ -10,10 +10,12 @@ spec:
   project: default
   source:
     repoURL: https://github.com/KKamJi98/helm-charts
-    path: thanos
+    path: prometheus-thanos
     targetRevision: main
     helm:
       releaseName: thanos
+      valueFiles:
+        - kkamji_local_values.yaml
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: monitoring
@@ -24,3 +26,5 @@ spec:
     syncOptions:
     - CreateNamespace=true
     - ServerSideApply=true
+    - PrunePropagationPolicy=foreground
+    - PruneLast=true
