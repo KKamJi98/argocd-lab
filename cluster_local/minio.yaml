@@ -17,7 +17,7 @@ spec:
           ingressClassName: nginx       # Matches your ingress controller
           hostname: minio.kkamji.net    # Domain for MinIO
           path: "/"                   # Path to access the console
-          pathType: ImplementationSpecific
+          pathType: Prefix
           annotations:
             cert-manager.io/cluster-issuer: "letsencrypt-prod"
             nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
@@ -30,7 +30,7 @@ spec:
           ingressClassName: nginx
           hostname: api.minio.kkamji.net  # API용 도메인 (분리하는 게 좋음)
           path: "/"
-          pathType: ImplementationSpecific
+          pathType: Prefix
           annotations:
             cert-manager.io/cluster-issuer: "letsencrypt-prod"
             nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
@@ -42,7 +42,13 @@ spec:
           rootUser: admin
           rootPassword: ""  # set your password here or via an external secret
 
-        resourcesPreset: "small"
+        resourcesPreset: "none"
+
+        provisioning:
+          resourcesPreset: "none"
+
+        volumePermissions:
+          resourcesPreset: "none"
 
 
   destination:
