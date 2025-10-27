@@ -12,7 +12,7 @@ spec:
     helm:
       releaseName: keycloak
       valueFiles:
-      - kkamji_values.yaml
+      - kkamji_nginx_ingress_values.yaml
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: keycloak

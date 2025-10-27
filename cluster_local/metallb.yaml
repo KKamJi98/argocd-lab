@@ -1,21 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: harbor
+  name: metallb
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://github.com/KKamJi98/helm-charts
-    path: harbor
-    targetRevision: main
+    repoURL: https://metallb.github.io/metallb
+    chart: metallb
+    targetRevision: 0.15.2
     helm:
-      releaseName: harbor
-      valueFiles:
-      - kkamji_nginx_ingress_values.yaml
+      releaseName: metallb
   destination:
-    server: 'https://kubernetes.default.svc'
-    namespace: harbor
+    server: https://kubernetes.default.svc
+    namespace: metallb-system
   syncPolicy:
     automated:
       prune: true

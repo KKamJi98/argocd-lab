@@ -1,5 +1,9 @@
 # Repository Guidelines
 
+<important>
+`/home/kkamji/.codex/AGENTS.md`의 내용을 반드시 확인하고 따를 것
+</important>
+
 ## 프로젝트 구조 및 모듈 구성
 - 이 저장소는 Argo CD Application 선언을 관리하며 `app-of-apps-basic/root-app.yaml`이 `app-of-apps-basic/applications/` 하위 리소스를 모두 묶는 진입점입니다.
 - 클러스터 전역 컨트롤러는 `cluster_local/`에 배치하고 파일명은 반드시 Application `metadata.name`과 동일하게 유지합니다.
